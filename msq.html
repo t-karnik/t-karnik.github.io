@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            width: 100px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <table><tr><td>Mod/Time</td><td>A</td><td>B</td><td>C</td><td>D</td></tr><tr><td>1</td><td class='hov' id='A:1'></td><td class='hov' id='B:1'></td><td class='hov' id='C:1'></td><td class='hov' id='D:1'></td></tr><tr><td>2</td><td class='hov' id='A:2'></td><td class='hov' id='B:2'></td><td class='hov' id='C:2'></td><td class='hov' id='D:2'></td></tr><tr><td>3</td><td class='hov' id='A:3'></td><td class='hov' id='B:3'></td><td class='hov' id='C:3'></td><td class='hov' id='D:3'></td></tr><tr><td>4</td><td class='hov' id='A:4'></td><td class='hov' id='B:4'></td><td class='hov' id='C:4'></td><td class='hov' id='D:4'></td></tr><tr><td>MD1</td><td class='hov' id='A:MD1'></td><td class='hov' id='B:MD1'></td><td class='hov' id='C:MD1'></td><td class='hov' id='D:MD1'></td></tr><tr><td>MD2</td><td class='hov' id='A:MD2'></td><td class='hov' id='B:MD2'></td><td class='hov' id='C:MD2'></td><td class='hov' id='D:MD2'></td></tr><tr><td>MD3</td><td class='hov' id='A:MD3'></td><td class='hov' id='B:MD3'></td><td class='hov' id='C:MD3'></td><td class='hov' id='D:MD3'></td></tr><tr><td>5</td><td class='hov' id='A:5'></td><td class='hov' id='B:5'></td><td class='hov' id='C:5'></td><td class='hov' id='D:5'></td></tr><tr><td>6</td><td class='hov' id='A:6'></td><td class='hov' id='B:6'></td><td class='hov' id='C:6'></td><td class='hov' id='D:6'></td></tr><tr><td>7</td><td class='hov' id='A:7'></td><td class='hov' id='B:7'></td><td class='hov' id='C:7'></td><td class='hov' id='D:7'></td></tr><tr><td>8</td><td class='hov' id='A:8'></td><td class='hov' id='B:8'></td><td class='hov' id='C:8'></td><td class='hov' id='D:8'></td></tr><tr><td>Afternoon</td><td class='hov' id='A:Afternoon'></td><td class='hov' id='B:Afternoon'></td><td class='hov' id='C:Afternoon'></td><td class='hov' id='D:Afternoon'></td></tr></table><p id='msg'></p><table><tr><td>Time</td><td>Available</td></tr><tr><td>8-9</td><td class='wed' id='8-9'></td></tr><tr><td>9-10</td><td class='wed' id='9-10'></td></tr><tr><td>10-11</td><td class='wed' id='10-11'></td></tr><tr><td>11-12</td><td class='wed' id='11-12'></td></tr><tr><td>12-1</td><td class='wed' id='12-1'></td></tr><tr><td>1-2</td><td class='wed' id='1-2'></td></tr><tr><td>2-3</td><td class='wed' id='2-3'></td></tr><tr><td>3-4</td><td class='wed' id='3-4'></td></tr><tr><td>4-5</td><td class='wed' id='4-5'></td></tr><tr><td>5-6</td><td class='wed' id='5-6'></td></tr></table><p id='imsg'></p>
+
+    <script>
+        var abcddata = {"I":{"10-11":["Grayson Pacourek","Colin Ward","Aditya Prashanth","Evan Kuzukas"],"1-2":["Grayson Pacourek","Nathan Kilmer","Nathan Brodsky","Jillian Potts","Avyay Duggirala"],"2-3":["Grayson Pacourek","Nathan Kilmer"],"3-4":["Grayson Pacourek","Nathan Kilmer","Theo Schreiber","Lisa Zhong","Evan Kuzukas"],"4-5":["Grayson Pacourek","Nathan Kilmer","Lisa Zhong"],"11-12":["Nathan Kilmer","Colin Ward","Steven Espinoza","Aditya Prashanth","Evan Kuzukas"],"12-1":["Nathan Brodsky","Colin Ward","Steven Espinoza","Aditya Prashanth","Jillian Potts","Avyay Duggirala","Tanav Karnik"],"9-10":["Steven Espinoza","Aditya Prashanth"],"5-6":["Jillian Potts","Jacie Cox"],"None on Wednesday":["Jacie Cox"]},"A":{"1":["Nathan Kilmer"],"2":["Nathan Kilmer"],"3":["Grayson Pacourek"],"4":["Evan Kuzukas"],"MD1":["Grayson Pacourek","Liam Nelson","Evan Kuzukas","Jacie Cox"],"MD2":["Tyler Smith","Liam Nelson","Aditya Prashanth","Jacie Cox"],"MD3":["Aditya Prashanth","Jacie Cox"],"MDhool":["Aditya Prashanth","Jacie Cox"]},"B":{"2":["Liam Nelson","Tanav Karnik"],"3":["Grayson Pacourek"],"4":["Grayson Pacourek","Nathan Kilmer","Evan Kuzukas","Tanav Karnik"],"5":["Liam Nelson"],"6":["Evan Kuzukas"],"7":["Nathan Brodsky"],"8":["Nathan Brodsky"],"MD1":["Grayson Pacourek","Nathan Kilmer","Evan Kuzukas","Jacie Cox","Tanav Karnik"],"MD2":["Tyler Smith","Nathan Kilmer","Aditya Prashanth","Evan Kuzukas","Jacie Cox"],"MD3":["Tyler Smith","Nathan Kilmer","Aditya Prashanth","Jacie Cox"],"MDhool":["Nathan Kilmer","Evan Kuzukas","Jacie Cox","Tanav Karnik"]},"C":{"1":["Nathan Kilmer"],"2":["Nathan Kilmer"],"3":["Grayson Pacourek","Aditya Prashanth"],"4":["Evan Kuzukas"],"5":["Grayson Pacourek","Liam Nelson","Evan Kuzukas"],"7":["Grayson Pacourek","Nathan Kilmer","Liam Nelson"],"MD1":["Grayson Pacourek","Nathan Kilmer","Evan Kuzukas","Jacie Cox"],"MD2":["Tyler Smith","Nathan Kilmer","Aditya Prashanth","Evan Kuzukas","Jacie Cox"],"MD3":["Tyler Smith","Nathan Kilmer","Aditya Prashanth","Jacie Cox"],"MDhool":["Jacie Cox"]},"D":{"3":["Grayson Pacourek"],"4":["Evan Kuzukas","Tanav Karnik"],"7":["Nathan Brodsky"],"8":["Nathan Brodsky"],"MD1":["Grayson Pacourek","Liam Nelson","Evan Kuzukas","Jacie Cox","Tanav Karnik"],"MD2":["Tyler Smith","Nathan Kilmer","Liam Nelson","Aditya Prashanth","Jacie Cox"],"MD3":["Nathan Kilmer","Aditya Prashanth","Jacie Cox"],"MDhool":["Nathan Kilmer","Aditya Prashanth","Jacie Cox","Tanav Karnik"]}};
+        var leveldata = {"Grayson Pacourek":{"Advanced":["Standard 3D Printing","Laser Cutter"],"Intermediate":["3D Pens","Soldering "],"Expert":["CAD"],"":["Other"]},"Tyler Smith":{"Intermediate":["3D Pens","Microcontroller"],"Expert":["Sticker/Vinyl Cutting"],"":["Other"]},"Nathan Kilmer":{"Advanced":["Standard 3D Printing","Resin Printing","CAD"],"Intermediate":["Soldering ","Microcontroller"],"":["Other"]},"Liam Nelson":{"Advanced":["CAD","CNC"],"Expert":["Soldering "],"Intermediate":["Microcontroller"],"":["Other"]},"Nathan Brodsky":{"Expert":["Standard 3D Printing","Soldering ","Other"],"Intermediate":["3D Pens"]},"Theo Schreiber":{"Intermediate":["Standard 3D Printing","Sticker/Vinyl Cutting"],"Expert":["3D Pens","Other"],"Advanced":["CAD","Soldering "]},"Joanna Menendie":{"Intermediate":["Standard 3D Printing","3D Pens","CAD"]},"Colin Ward":{"Intermediate":["Standard 3D Printing"]},"Steven Espinoza":{"Intermediate":["CAD"]},"Aditya Prashanth":{"Intermediate":["Standard 3D Printing","Soldering ","Microcontroller"],"Advanced":["CAD"]},"Jillian Potts":{},"Avyay Duggirala":{"Intermediate":["Standard 3D Printing","Resin Printing"],"Advanced":["CAD","Other"]},"Lisa Zhong":{},"Evan Kuzukas":{"Intermediate":["Standard 3D Printing","CNC","Mold Making"]},"Jacie Cox":{"Intermediate":["Soldering ","Other"]},"Tanav Karnik":{"Intermediate":["Standard 3D Printing","3D Pens","Sticker/Vinyl Cutting"],"Advanced":["CAD"],"Expert":["Microcontroller","Other"]}};
+
+        window.onload = function () {
+            document.querySelectorAll("td.hov").forEach(elem => {
+                elem.onmouseover = ()=>getPeople(elem);
+                
+                var day = elem.id.split(":")[0], mod = elem.id.split(":")[1];
+                var people = abcddata[day][mod];
+                //console.log(people);
+                if (people == undefined)
+                    elem.style.backgroundColor = "gray";
+                else
+                    elem.style.backgroundColor = "limegreen";
+                
+                if (people === undefined)
+                    elem.innerText = "0";
+                else
+                    elem.innerText = people.length;
+            });
+
+            document.querySelectorAll("td.wed").forEach(elem => {
+                elem.onmouseover = ()=>getPeopleI(elem);
+                //console.log(elem);
+                var time = elem.id;
+                var people = abcddata["I"][time];
+
+                //console.log(people);
+
+                if (people == undefined)
+                    elem.style.backgroundColor = "gray";
+                else
+                    elem.style.backgroundColor = "limegreen";
+                
+                if (people === undefined)
+                    elem.innerText = "0";
+                else
+                    elem.innerText = people.length;
+                //console.log(123);
+            });
+        }
+        
+        function getPeople (elem) {
+            var id = elem.id;
+
+            var day = id.split(":")[0], mod = id.split(":")[1];
+
+            var people = abcddata[day][mod];
+
+            if (people !== undefined) {
+                document.getElementById("msg").innerText = `${day} day mod ${mod}: ${people.join(', ')}`;
+                for (var p of people) {
+                    var txt = "<br>" + p + ": \n<ul>";
+
+                    for (var level of Object.keys(leveldata[p])) {
+                        txt += "<li>" + level + "<ul>";
+                            for (var skill of leveldata[p][level])
+                                txt += "<li>" + skill + "</li>";    
+                        txt += "</ul></li>";
+                    }
+
+                    txt += "</ul>";
+
+                    document.getElementById("msg").innerHTML += txt;
+                }
+            } else {
+                document.getElementById("msg").innerText = `${day} day mod ${mod}: No one available`;
+            }
+        }
+        function getPeopleI (elem) {
+            var id = elem.id;
+            var people = abcddata["I"][id];
+
+            if (people !== undefined) {
+                document.getElementById("imsg").innerText = `I day ${id}: ${people.join(', ')}`;
+                for (var p of people) {
+                    var txt = "<br>" + p + ": \n<ul>";
+
+                    for (var level of Object.keys(leveldata[p])) {
+                        txt += "<li>" + level + "<ul>";
+                            for (var skill of leveldata[p][level])
+                                txt += "<li>" + skill + "</li>";    
+                        txt += "</ul></li>";
+                    }
+
+                    txt += "</ul>";
+
+                    document.getElementById("imsg").innerHTML += txt;
+                }
+            } else {
+                document.getElementById("imsg").innerText = `I day ${id}: No one available`;
+            }
+        }
+    </script>
+</body>
+</html>
